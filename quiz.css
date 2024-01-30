@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: lightblue;
+
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+#aloitus-sivu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 100% näkymän korkeudesta */
+  }
+
+#aloitus-sivu h1,
+#aloitus-sivu button {
+    margin: 10px auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#peli-sivu {
+    display: none;
+}
+
+#quiz-container {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    
+}
+
+button:hover {
+    background-color: mediumpurple;
+}
+
+
+#tulokset-container p.correct {
+    color: green;
+  }
+  
+  #tulokset-container p.wrong {
+    color: red;
+  }
+
+  

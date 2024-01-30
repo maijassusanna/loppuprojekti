@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Capital-quiz</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+<div id="aloitus-sivu">
+  <h1>Welcome to the game!</h1>
+  <p> The idea is to answer correctly to all of the questions! Good luck! </p>
+  <button onclick="aloitaPeli()">Start</button>
+</div>
+
+<div id="peli-sivu" style="display: none;">
+  <h1>World Capital-quiz</h1>
+
+  <div id="quiz-container">
+    <!-- Tähän lisätään kysymykset ja vastauskentät dynaamisesti -->
+  </div>
+
+  <button onclick="tarkistaVastaukset()">Get the results</button>
+</div>
+
+
+<div id="tulokset-container"></div>
+
+
+<script src="quiz.js"></script>
+
+</body>
+</html>

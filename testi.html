@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Game</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: lightblue;
+    }
+
+    #quiz-container {
+      max-width: 600px;
+    }
+
+    #quiz-container p {
+      margin-bottom: 10px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      opacity: 0.9;
+      font-size: 24px;
+    }
+
+    #tulokset-container {
+      display: none;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .wrong {
+      color: red;
+    }
+
+    #vastaus {
+      font-size: 16px; /* Muuta fonttikokoa tarpeen mukaan */
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    button {
+      font-size: 16px; /* Muuta fonttikokoa tarpeen mukaan */
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: cadetblue;
+      color: white; /* Lisää tekstin väri tarpeen mukaan */
+      border: none; 
+    }
+
+    button:hover {
+        background-color: darkcyan;
+        cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="quiz-container">
+    <!-- Tähän lisätään kysymykset dynaamisesti -->
+  </div>
+
+  <div id="tulokset-container">
+    <!-- Tähän lisätään tulokset dynaamisesti -->
+    <button onclick="aloitaUudestaan()">Play again</button>
+  </div>
+
+  <script>
+    const kysymykset = [
+    { kysymys: 'What is the capital of France?', oikeaVastaus: 'Paris'},
+    { kysymys: 'What is the capital of Estonia?', oikeaVastaus: 'Tallinn'},
+    { kysymys: 'What is the capital of Australia?', oikeaVastaus: 'Canberra' },
+    { kysymys: 'What is the capital of India?', oikeaVastaus: 'New Delhi' },
+    { kysymys: 'What is the capital of Canada?', oikeaVastaus: 'Ottawa' },
+    { kysymys: 'What is the capital of China?', oikeaVastaus: 'Beijing' },
+    { kysymys: 'What is the capital of Germany?', oikeaVastaus: 'Berlin' },
+    { kysymys: 'What is the capital of Spain?', oikeaVastaus: 'Madrid' },
+    { kysymys: 'What is the capital of Italy?', oikeaVastaus: 'Rome' },
+    { kysymys: 'What is the capital of Greece?', oikeaVastaus: 'Athens' },
+  ];
+
+    let nykyinenKysymys = 0;
+    let peliTila = {
+      aloitettu: false,
+      suoritettu: false,
+    };
+
+    function luoKysymys() {
+      const quizContainer = document.getElementById('quiz-container');
+      const kysymysObj = kysymykset[nykyinenKysymys];
+
+      const kysymysElementti = document.createElement('div');
+      kysymysElementti.innerHTML = `<p>${nykyinenKysymys + 1}. ${kysymysObj.kysymys}</p>
+                                    <input type="text" id="vastaus" placeholder="Answer here...">
+                                    <button onclick="tarkistaVastaus()">Next question</button>`;
+
+      quizContainer.innerHTML = ''; // Tyhjennä container ennen uuden kysymyksen lisäämistä
+      quizContainer.appendChild(kysymysElementti);
+
+      peliTila.aloitettu = true;
+
+    }
+
+    function tarkistaVastaus() {
+      const kayttajanVastaus = document.getElementById('vastaus').value.trim();
+      const oikeaVastaus = kysymykset[nykyinenKysymys].oikeaVastaus.toLowerCase();
+
+      const tuloksetContainer = document.getElementById('tulokset-container');
+      const vastausElementti = document.createElement('p');
+      vastausElementti.textContent = `Question ${nykyinenKysymys + 1}: Your answer - ${kayttajanVastaus}, Correct answer - ${oikeaVastaus}`;
+      tuloksetContainer.appendChild(vastausElementti);
+
+      if (kayttajanVastaus.toLowerCase() === oikeaVastaus) {
+        vastausElementti.classList.add('correct');
+      } else {
+        vastausElementti.classList.add('wrong');
+      }
+
+      nykyinenKysymys++;
+
+      if (nykyinenKysymys === kysymykset.length) {
+        lopetaPeli();
+      } else {
+        luoKysymys();
+      }
+    }
+
+    function lopetaPeli() {
+      const tuloksetContainer = document.getElementById('tulokset-container');
+      tuloksetContainer.style.display = 'block';
+
+      const uudelleenButton = document.createElement('button');
+      uudelleenButton.textContent = 'Play again';
+      uudelleenButton.addEventListener('click', aloitaUudestaan);
+      tuloksetContainer.appendChild(uudelleenButton);
+
+      // Piilota kysymys-container
+      document.getElementById('quiz-container').style.display = 'none';
+
+      // nollaa pelin tila
+      nykyinenKysymys = 0;
+      peliTila.aloitettu = false;
+    }
+
+    function aloitaUudestaan() {
+      nykyinenKysymys = 0;
+      peliTila.aloitettu = false;
+      //tyhjentää tulokset container
+      document.getElementById('tulokset-container').innerHTML = '';
+      document.getElementById('tulokset-container').style.display = 'none';
+
+      // näyttää kysymys containerin
+      document.getElementById('quiz-container').style.display = 'block';
+      aloitaPeli();
+    }
+
+    function aloitaPeli() {
+      nykyinenKysymys = 0;
+      document.getElementById('quiz-container').innerHTML = '';
+      document.getElementById('tulokset-container').innerHTML = '';
+      document.getElementById('tulokset-container').style.display = 'none';
+      luoKysymys();
+    }
+
+    window.onload = function () {
+      aloitaPeli();
+    };
+  </script>
+</body>
+</html>

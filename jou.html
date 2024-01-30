@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="jou.css">
+  <title>Quiz Game</title>
+</head>
+<body>
+     <div class="start-container">
+        <h1>Welcome to the Quiz Game!</h1>
+        <p>Test your knowledge by answering the following questions:</p>
+        <button id="start-btn" class="btn start-btn">Start Quiz</button>
+    </div>
+
+    <div id="question-container" class="hide">
+        <p id="question"></p>
+        <input type="text" id="user-answer" class="user-answer hide">
+        <button id="submit-btn" class="btn">Submit Answer</button>
+        <button id="next-btn" class="btn hide">Next Question</button>
+    </div>
+
+    <div id="result-container" class="hide">
+        <h2>Your Results:</h2>
+        <p id="user-score"></p>
+        <div id="result-list"></div>
+        <button id="play-again-btn" class="btn">Play Again</button>
+    </div>
+
+    <script src="jou.js"></script>
+</body>
+</html>

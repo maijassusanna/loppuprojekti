@@ -1,0 +1,136 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url('kuvat/taivas.jpg'); 
+  background-size: cover;
+}
+
+h1 {
+  color: black;
+}
+
+#start-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  background-color: rgb(119, 188, 197);
+  opacity: 0.8;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px 2px;
+  max-width: 80%;
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+
+}
+
+#start-container h1 {
+  font-size: 40px;
+  color: white;
+}
+
+#start-container p {
+  font-size: 24px;
+  padding: 5px;
+  color: white;
+}
+
+#start-container button {
+  font-size: 24px;
+  cursor: pointer;
+  background-color: rgb(80, 142, 150);
+}
+
+#start-container button:hover {
+  background-color: rgb(9, 66, 74);
+  color: white;
+}
+
+#start-container h1,
+#start-container button {
+  margin: 10px auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#quiz-container {
+  max-width: 600px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  opacity: 0.9;
+  font-size: 28px;
+}
+
+#quiz-container p {
+  margin-bottom: 10px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  opacity: 0.9;
+  font-size: 28px;
+}
+
+#results-container {
+  display: none;
+  max-width: 600px;
+  text-align: center;
+}
+
+
+
+#results-container h1 {
+  margin-bottom: 10px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  opacity: 0.9;
+  font-size: 28px;
+}
+
+.correct {
+  color: green;
+  margin-bottom: 10px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 12px;
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+.wrong {
+  color: red;
+  margin-bottom: 10px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 12px;
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+#answer {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: cadetblue;
+  color: white;
+  border: none; 
+}
+
+button:hover {
+  background-color: darkcyan;
+  cursor: pointer;
+}
